@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:viewModel="clr-namespace:BorderView.ViewModel"
+             xmlns:control="clr-namespace:BorderView.Control"
+             xmlns:iOS="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             iOS:Page.UseSafeArea="true"
+             x:Class="BorderView.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewModel:AnimalsViewModel x:Name="ViewModel"/>
+    </ContentPage.BindingContext>
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Padding="10" Text="Border View Demo" FontSize="Title" TextColor="Black" 
+                   HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+        </StackLayout>
+        <StackLayout HorizontalOptions="FillAndExpand" HeightRequest="1" BackgroundColor="#E7E8E9" Opacity="0.5"/>
+        <CollectionView x:Name="CollectionView" ItemSizingStrategy="MeasureFirstItem" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        HorizontalScrollBarVisibility="Never" VerticalScrollBarVisibility="Never" ItemsSource="{Binding Animals}"
+                        SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" HorizontalItemSpacing="0" VerticalItemSpacing="0"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="0" BackgroundColor="Transparent">
+                        <control:BorderView VerticalOptions="FillAndExpand" BorderThickness="0,0,1,1"  HorizontalOptions="FillAndExpand"
+                                            Padding="0" BorderColor="#E7E8E9" NeedSameBorderColor="False" RightBorderColor="Red" TopBorderColor="Green" BottomBorderColor="DarkBlue"
+                                            LeftBorderColor="Blue">
+                            <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Padding="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Image Source="{Binding ImageUrl}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       Aspect="AspectFill" HeightRequest="60" WidthRequest="60"/>
+                                <Label Grid.Row="1" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       LineBreakMode="NoWrap" Text="{Binding Name}"
+                                       TextColor="#000000" FontSize="16"/>
+                                <Label Grid.Row="2" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"
+                                       HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"
+                                       Text="{Binding Location}" FontSize="10" TextColor="#71787D"/>
+                            </Grid>
+                        </control:BorderView>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+
+</ContentPage>
