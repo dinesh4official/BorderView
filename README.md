@@ -2,4 +2,4 @@
 
 ## Screenshot
 
-<img src="https://github.com/dinesh4official/BorderView/tree/master/ScreenShot/BorderView.JPEG">
+<img src="https://github.com/dinesh4official/BorderView/blob/master/ScreenShot/BorderView.JPEG">
